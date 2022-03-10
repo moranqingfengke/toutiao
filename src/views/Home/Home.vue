@@ -12,7 +12,9 @@
       </template>
     </van-nav-bar>
     <van-tabs v-model="active" sticky offset-top="1.22666667rem">
-      <van-tab v-for="item in userChannel" :title="item.name" :key="item.id">内容 1</van-tab>
+      <van-tab v-for="item in userChannel" :title="item.name" :key="item.id">
+        <ArtList :channelId="item.id"></ArtList>
+      </van-tab>
     </van-tabs>
     <van-icon name="plus" size="16" class="plus"/>
   </div>
@@ -22,9 +24,14 @@
 
 // 按需导入获取频道的接口
 import { getUserChannelAPI } from '@/api/homeAPI.js'
+// 导入ArtList组件
+import ArtList from '@/components/ArtList/ArtList.vue'
 
 export default {
   name: 'Home',
+  components: {
+    ArtList
+  },
   data () {
     return {
       // 频道索引
@@ -58,10 +65,12 @@ export default {
 }
 /deep/ .van-tabs__wrap{
   padding-right: 36px;
+  background-color: white;
 }
 .plus{
   position: fixed;
   top: 58px;
   right: 10px;
+  z-index: 999;
 }
 </style>
