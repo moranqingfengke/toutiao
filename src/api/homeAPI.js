@@ -14,3 +14,18 @@ export const getArtListAPI = (id, time) => {
     }
   })
 }
+
+// 将文章设置成不感兴趣
+export const dislikeArticleAPI = id => {
+  return request.post('/v1_0/article/dislikes', {
+    target: id
+  })
+}
+
+// 举报文章的 API
+export const reportArticleAPI = (target, type) => {
+  return request.post('/v1_0/article/reports', {
+    target, // 文章的 Id
+    type // 举报的类型
+  })
+}

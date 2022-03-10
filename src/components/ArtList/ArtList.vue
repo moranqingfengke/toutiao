@@ -3,7 +3,7 @@
     <!-- 下拉刷新 -->
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh" :disabled="finished">
       <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" :immediate-check="false">
-        <ArtItem v-for="item in artlist" :key="item.art_id" :article="item"></ArtItem>
+        <ArtItem v-for="item in artlist" :key="item.art_id" :article="item" @remove-article="removeArticle"></ArtItem>
       </van-list>
     </van-pull-refresh>
   </div>
@@ -63,8 +63,19 @@ export default {
     onLoad () {
       this.initArtList()
     },
+    // 下拉刷新
     onRefresh () {
       this.initArtList(true)
+    },
+    // 移除文章
+    removeArticle (id) {
+      // 过滤器，过滤掉指定id文章
+      this.artlist = this.artlist.filter(item => item.art_id.toString() !== id)
+      // 当文章不能铺满整个屏幕，导致下拉和上拉失效
+      if (this.artlist.length < 10) {
+      // 主动请求下一页的数据
+        this.initArtList()
+      }
     }
   },
   created () {
