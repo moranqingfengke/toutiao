@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click="$router.push('/article/' + artId)">
     <van-cell>
       <!-- 标题 -->
       <template #title>
