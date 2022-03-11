@@ -18,7 +18,7 @@
         <div class="label-box">
           <span>{{article.aut_name}} &nbsp;&nbsp; {{article.comm_count}}评论 &nbsp;&nbsp; {{article.pubdate}}</span>
           <!-- 关闭按钮 -->
-          <van-icon name="cross" @click.stop="show = true"/>
+          <van-icon name="cross" @click.stop="show = true" v-if="closable"/>
         </div>
       </template>
     </van-cell>
@@ -51,6 +51,11 @@ export default {
     article: {
       type: Object,
       required: true
+    },
+    // 是否展示关闭按钮
+    closable: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
