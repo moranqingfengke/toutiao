@@ -23,6 +23,15 @@ if (stateStr) {
 
 export default new Vuex.Store({
   state: initState,
+  getters: {
+    userAvatar (state) {
+      let imgSrc = 'https://img.yzcdn.cn/vant/cat.jpeg'
+      if (state.userInfo.photo) {
+        imgSrc = state.userInfo.photo
+      }
+      return imgSrc
+    }
+  },
   mutations: {
     // 更新token方法
     updateTokenInfo (state, payload) {
