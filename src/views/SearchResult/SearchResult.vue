@@ -49,6 +49,9 @@ export default {
         }
         this.page += 1
       }
+    },
+    onLoad () {
+      this.initSearchList()
     }
   },
   created () {

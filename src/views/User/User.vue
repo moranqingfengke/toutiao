@@ -34,7 +34,7 @@
 
     <!-- 操作面板 -->
     <van-cell-group class="action-card">
-      <van-cell icon="edit" title="编辑资料" is-link />
+      <van-cell icon="edit" title="编辑资料" is-link to="/user/edit"/>
       <van-cell icon="chat-o" title="小思同学" is-link to="/chat" />
       <van-cell icon="warning-o" title="退出登录" is-link @click="logout" />
     </van-cell-group>
@@ -49,11 +49,11 @@ import { mapActions, mapState, mapMutations } from 'vuex'
 export default {
   name: 'User',
   computed: {
-    ...mapMutations(['cleanState']),
     // 映射userInfo
     ...mapState(['userInfo'])
   },
   methods: {
+    ...mapMutations(['cleanState']),
     // 映射initUserInfo方法
     ...mapActions(['initUserInfo']),
     async  logout () {

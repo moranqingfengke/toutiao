@@ -1,7 +1,8 @@
 import axios from 'axios'
 // 导入Toast轻提示
 import { Toast } from 'vant'
-import store from '../store'
+import store from '@/store/index.js'
+import router from '@/router/index.js'
 
 // 调用 axios.create() 方法，创建 axios 的实例对象
 const instance = axios.create({
@@ -36,6 +37,12 @@ instance.interceptors.response.use(
     return response
   },
   error => {
+    Toast.clear()
+    if (error.response && error.response.status === 401) {
+      console.log('token 过期啦')
+      store.commit('cleanState')
+      router.replace('/login')
+    }
     return Promise.reject(error)
   }
 )

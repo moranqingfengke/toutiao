@@ -52,9 +52,11 @@ export default {
       currentDate: new Date()
     }
   },
+  computed: {
+    ...mapState(['userProfile'])
+  },
   methods: {
     ...mapActions(['initUserProfile']),
-    ...mapState(['userProfile']),
     // 点击了修改名称的 cell
     onNameCellClick () {
       this.showNameDialog = true

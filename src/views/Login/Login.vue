@@ -49,7 +49,7 @@ export default {
       const { data: res } = await loginAPI(this.form)
       if (res.message === 'OK') {
         // 存取token，跳转主页
-        this.updateTokenInfo(res.data.token)
+        this.updateTokenInfo(res.data)
         this.$router.push('/')
       }
     }
