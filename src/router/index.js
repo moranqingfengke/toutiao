@@ -18,6 +18,8 @@ import ArticleDetail from '@/views/ArticleDetail/ArticleDetail.vue'
 import UserEdit from '@/views/UserEdit/UserEdit.vue'
 // 小思同学
 import Chat from '@/views/Chat/Chat.vue'
+// 导入vuex
+import store from '@/store/index.js'
 
 Vue.use(VueRouter)
 
@@ -40,6 +42,23 @@ const routes = [
 
 const router = new VueRouter({
   routes
+})
+
+// 有权限的路径
+const pagePathArr = ['/user', '/user/edit']
+
+// 全局前置守卫
+router.beforeEach((to, from, next) => {
+  if (pagePathArr.indexOf(to.path) !== -1) {
+    const tokenStr = store.state.tokenInfo.token
+    if (tokenStr) {
+      next()
+    } else {
+      next('/login')
+    }
+  } else {
+    next()
+  }
 })
 
 export default router
