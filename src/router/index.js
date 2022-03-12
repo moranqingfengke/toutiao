@@ -14,6 +14,8 @@ import Search from '@/views/Search/Search.vue'
 import SearchResult from '@/views/SearchResult/SearchResult.vue'
 // 文章详情
 import ArticleDetail from '@/views/ArticleDetail/ArticleDetail.vue'
+// 编辑个人资料
+import UserEdit from '@/views/UserEdit/UserEdit.vue'
 
 Vue.use(VueRouter)
 
@@ -29,7 +31,8 @@ const routes = [
   },
   { path: '/search', component: Search, name: 'search' },
   { path: '/search/:kw', component: SearchResult, name: 'search-result', props: true },
-  { path: '/article/:id', component: ArticleDetail, name: 'art-detail', props: true }
+  { path: '/article/:id', component: ArticleDetail, name: 'art-detail', props: true },
+  { path: '/user/edit', component: UserEdit, name: 'user-edit' }
 ]
 
 const router = new VueRouter({
