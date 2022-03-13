@@ -1,5 +1,5 @@
 # toutiao
-
+密码：246810
 ## Project setup
 ```
 npm install
